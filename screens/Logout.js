@@ -1,61 +1,207 @@
-import React, { Component } from 'react';
-import { 
-  View,
-  Text,
-  FlatList,
+import { StatusBar } from "expo-status-bar";
+import React, { useEffect, useState } from "react";
+import { withNavigation } from 'react-navigation';
+import { createStackNavigator, createAppContainer,navigate,navigation } from "react-navigation";
+
+import {
   StyleSheet,
-} from 'react-native';
+  Text,
+  View,
+  Dimensions,
+  TouchableOpacity,
+  Image,
+  TextInput
+} from "react-native";
 
-import ItemShopingCart from '../components/ItemShoppingCart';
+// import { TextInput } from 'react-native-gesture-handler';
+import { Ionicons } from "@expo/vector-icons";
+import { Entypo } from "@expo/vector-icons";
+const { width: WIDTH } = Dimensions.get("window");
+import { FontAwesome } from "@expo/vector-icons";
+import { Component } from "react";
+
+const LoginScreen4 = ({ errorText, navigation, ...props }) => {
+  const [show, setshow] = React.useState(false);
+  const [visible, setVisible] = React.useState(true)
+  const [email, setEmail] = useState({ value: "", error: "" });
+  const [password, setPassword] = useState({ value: "", error: "" });
+  const [name, setName] = useState({ value: "", error: "" });
+  //const [press, showPass] = useState(true);
 
 
-class ShopingCart1 extends Component {
 
-  _keyExtractor = (item, idx) => item.id;
 
-  _renderItem = ({ item }) => (
-    <ItemShopingCart item={ item }/>
+  const _onSignUpPressed = async () => {
+    navigation.navigate("product")
+
+    
+  };
+
+
+
+
+
+  return (
+    <View style={styles.container}>
+      <Image
+        style={{
+          height: "50%",
+          width: "100%",
+          bottom: 70,
+          left:5,
+          top:100,
+        }}
+        source={require("../assets/Logout.jpg")}
+      ></Image>
+            <TouchableOpacity  style={styles.btnLogin} 
+              onPress={
+                () =>navigation.navigate("welcome")
+              }
+>
+        <Text style={styles.text}>Confirm Logout</Text>
+      </TouchableOpacity>
+  
+           
+    </View>
   );
-
-  render() {
-    const { cartItems, total } = this.props;
-    return (
-      <View style={ styles.container }>
-        <Text style={ styles.sectionTitle }>Logout page</Text>
-        {/* <FlatList
-         style={{ flexGrow: 0 }}
-         data={ cartItems }
-         keyExtractor={ this._keyExtractor }
-         renderItem={ this._renderItem }
-        /> */}
-        <Text style={ styles.total }>Logout Sucess</Text>
-      </View>
-    );
-  }
-}
-
-const mapStateToProps = (state) => ({
-  cartItems: state.carts.items,
-  total: state.carts.total,
-});
+};
 
 const styles = StyleSheet.create({
+  text: {
+    color: "#fff",
+    
+    fontSize: 21,
+    textAlign: "center",
+    fontWeight: "bold",
+  },
+  btnLogin: {
+    margin: "3%" ,
+
+    // backgroundColor: "#432577",
+    backgroundColor:"#ffa500"  ,
+        justifyContent: "center",
+    marginTop: 30,
+    top: 80,
+    borderBottomWidth: 1,
+    borderColor:"#fff",
+    borderStyle: "solid",
+    borderWidth: 2,
+    width: "95%",
+  
+    height: 50,
+  },
+  
   container: {
     flex: 1,
-    margin: 16,
+    backgroundColor: "#fff",
   },
-  sectionTitle: {
-    fontSize: 24,
-  },
-  total: { 
-    padding: 8,
+  textBox: {
+    shadowColor: "#000",
+    margin: "3%" ,
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+    shadowOffset: {
+      height: 0,
+      width: 0,
+    },
+    elevation: 6,
+top:66,
+    fontSize: 20,
+    height: 45,
+    paddingRight: 45,
+    paddingLeft: 8,
+    paddingVertical: 0,
     backgroundColor: '#fff',
-    fontSize: 16,
-    fontWeight: 'bold',
-    textAlign: 'right',
-    marginTop: 4,
-    marginBottom: 4,
-  }
-});
+  // backgroundColor:"#FFFF",
+  borderBottomWidth : 2,
+borderBottomColor:"#ffa500",
+ // color: '#fff',
+  borderColor:"#fff"
+  
+  },
+  
+ 
+  btneye: {
+    position: "absolute",
+    top: 20,
+    right: 37,
+  },
+  btnLogin: {
+    margin: "3%" ,
 
-export default (ShopingCart1);
+    // backgroundColor: "#432577",
+    backgroundColor:"#ffa500"  ,
+        justifyContent: "center",
+    marginTop: 30,
+    top: 80,
+    borderBottomWidth: 1,
+    borderColor:"#fff",
+    borderStyle: "solid",
+    borderWidth: 2,
+    width: "95%",
+  
+    height: 50,
+  },
+  
+  label1: {
+      position: "absolute",
+      marginTop:30,
+      marginLeft:180,
+    //color: "darkblue",
+   alignItems:"flex-end"
+
+
+  },
+  phone:{
+    marginLeft:80,
+fontSize:26,
+fontWeight:"bold",
+    top:130,
+color:"#ffa500"
+  },
+  label1: {
+      position: "absolute",
+      marginTop:30,
+      marginLeft:180,
+    color: "darkblue",
+   alignItems:"flex-end"
+
+
+  },
+  text: {
+    color: "#fff",
+    
+    fontSize: 21,
+    textAlign: "center",
+    fontWeight: "bold",
+  },
+  
+  label: {
+    fontSize: 26,
+    color: "#ffff",
+    fontWeight: "bold",
+    right: -89,
+    bottom: 40,
+    position: "absolute",
+  },
+  container2: {
+    fontSize: 30,
+    bottom: 280,
+    position: "absolute",
+  },
+  textlabel: {
+    position: "absolute",
+    alignItems:"center",
+    left:115,
+    fontFamily: "sans-serif",
+
+  },
+  forgotPassword: {
+    width: "100%",
+    alignItems: "flex-end",
+    marginBottom: 24,
+    top: -25,
+    right: 10
+  },
+});
+export default withNavigation(LoginScreen4);

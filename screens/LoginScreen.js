@@ -13,7 +13,7 @@ import {
 // import { TextInput } from 'react-native-gesture-handler';
 import { Ionicons } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
-const { width: WIDTH } = Dimensions.get("window");
+const { width: WIDTH, height:HEIGHT } = Dimensions.get("window");
 import { FontAwesome } from "@expo/vector-icons";
 import { Component } from "react";
 
@@ -42,7 +42,7 @@ const LoginScreen = ({ errorText, navigation, ...props }) => {
     <View style={styles.container}>
       <Image
         style={{
-          height: "50%",
+          height: "40%",
           width: 130,
           bottom: 20,
           left:110,

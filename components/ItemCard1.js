@@ -38,7 +38,7 @@ class ItemCard extends Component {
     width: 70,
     height: 25,
   }}          onPress={
-    () =>this.props.navigation.navigate("order")
+    () =>this.props.navigation.navigate("map")
   }
       
 >
@@ -78,6 +78,7 @@ const styles = StyleSheet.create({
     marginLeft: 2,
     marginTop:2,
     paddingTop:30,
+
     flex: 1,
     justifyContent: 'flex-start',
   },

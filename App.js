@@ -17,23 +17,39 @@ import Fontisto from "react-native-vector-icons/Fontisto";
 import MyProfile from "./screens/MyProfile"
  import { MaterialIcons } from '@expo/vector-icons';
  import Icon from "react-native-vector-icons/FontAwesome5";
- import { createDrawerNavigator, DrawerItems } from "react-navigation-drawer";
-
+c
  import NavigationDrawerHeader from "./components/NavigationDrawerHeader";
+ import NavigationDrawerHeader1 from "./components/NavigationDrawerHeader1";
 
 import Home from './screens/Home';
 import LoginScreen from './screens/LoginScreen'
+import MAP from './screens/Map'
+import order from './screens/orderscreen'
+
 import Logout from './screens/Logout'
 import ChangePassword from './screens/ChangePassword'
+import { createBottomTabNavigator } from "react-navigation-tabs"
+
 import MyEarnings from './screens/MyEarnings'
-
-
+import { 
+createSwitchNavigator 
+} from "react-navigation";
 import { View ,Text} from 'react-native';
 import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5';
 
+import TrackCreateScreen from "./Screens1/TrackCreateScreen";
+
+const switchNavigator = createSwitchNavigator({
+  
+mainFlow:createBottomTabNavigator({
+ 
+  TrackCreate:TrackCreateScreen,
+
+})
+});
 const LoginModule = createStackNavigator(
   {
-    
+   
     welcome: {
       screen: WelcomeScreen,
       navigationOptions: ({ navigation }) => ({      
@@ -41,8 +57,9 @@ const LoginModule = createStackNavigator(
     }),
     
     },
+
     login: {
-      screen: LoginScreen,
+      screen:LoginScreen,
       navigationOptions: ({ navigation }) => ({
 headerTitle:"FORGOT PASSWORD" , 
 headerTintColor:"#fff" ,   
@@ -57,7 +74,27 @@ headerStyle: {
       headerShown:false,
     }),
   },
-   
+   map: {
+      screen: MAP,
+      navigationOptions: ({ navigation }) => ({   
+        headerLeft: () =><NavigationDrawerHeader1 navigationProps={navigation}   />,
+        headerTitle:"Current Order" , 
+        headerTintColor:"#fff" ,   
+        headerStyle: {
+          backgroundColor: '#ffa500'
+        },
+      })
+    },
+    order: {
+      screen: order,
+      navigationOptions: ({ navigation }) => ({      
+        headerTitle:"Order Delivered" , 
+        headerTintColor:"#fff" ,   
+        headerStyle: {
+          backgroundColor: '#ffa500'
+        },})
+      },
+
     product: {
       screen: Home,
       navigationOptions: ({ navigation }) => ({
@@ -77,10 +114,15 @@ headerStyle: {
 );
 const MyProfile1 = createStackNavigator(
   {
-    MyEarnings: {
+    MyProfile2: {
       screen: MyProfile,
       navigationOptions: ({ navigation }) => ({      
-      headerShown:false,
+        headerLeft: () =><NavigationDrawerHeader1 navigationProps={navigation}   />,
+        headerTitle:"MY PROFILE" , 
+        headerTintColor:"#fff" ,   
+        headerStyle: {
+          backgroundColor: '#ffa500'
+        },
     }),
     },
   },
@@ -90,10 +132,16 @@ const MyEarnings1 = createStackNavigator(
   {
     MyEarnings: {
       screen: MyEarnings,
-      navigationOptions: ({ navigation }) => ({      
-      headerShown:false,
+      navigationOptions: ({ navigation }) => ({   
+        headerLeft: () =><NavigationDrawerHeader1 navigationProps={navigation}   />,
+        headerTitle:"MY EARNINGS" , 
+        headerTintColor:"#fff" ,   
+        headerStyle: {
+          backgroundColor: '#ffa500'
+        },
     }),
-    },
+    }
+    
   },
   
 );
@@ -102,8 +150,13 @@ const ChangePassword1 = createStackNavigator(
   {
     ChangePassword: {
       screen: ChangePassword,
-      navigationOptions: ({ navigation }) => ({      
-      headerShown:false,
+      navigationOptions: ({ navigation }) => ({   
+        headerLeft: () =><NavigationDrawerHeader1 navigationProps={navigation}   />,
+        headerTitle:"CHANGE PASSWORD" , 
+        headerTintColor:"#fff" ,   
+        headerStyle: {
+          backgroundColor: '#ffa500'
+        },
     }),
     },
    
@@ -116,7 +169,12 @@ const Logout1 = createStackNavigator(
     Logout: {
       screen: Logout,
       navigationOptions: ({ navigation }) => ({      
-      headerShown:false,
+        headerLeft: () =><NavigationDrawerHeader1 navigationProps={navigation}   />,
+        headerTitle:"LOGOUT" ,
+        headerTintColor:"#fff" ,   
+        headerStyle: {
+          backgroundColor: '#ffa500'
+        },
     }),
     },
    
@@ -151,8 +209,7 @@ const AppNavigator = createDrawerNavigator({
    navigationOptions: {
       drawerIcon: () => {
         return <FontAwesome5Icon name="money-bill-wave" size={20}  />
-      }
-    
+      },
     },
   },
   ChangePassword: {
@@ -300,4 +357,12 @@ AppNavigator.navigationOptions = ({ navigation }) => {return {
 
 const AppContainer = createAppContainer(AppNavigator);
 
-export default AppContainer
+
+export default () => {
+  return (
+      
+        <AppContainer/>
+     
+    
+  );
+};

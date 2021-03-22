@@ -11,6 +11,7 @@ import {
 
 
 import ItemCard from '../components/ItemCard';
+import ItemCard1 from '../components/ItemCard1';
 
 class Home extends Component {
   constructor(){  
@@ -40,6 +41,11 @@ class Home extends Component {
   
     
     <ItemCard item={ item } />
+  );
+  _renderItem1 = ({item}) => (
+  
+    
+    <ItemCard1 item={ item } />
   );
 
   render() {
@@ -111,7 +117,7 @@ top:-30,
         
       ] }
       
-        renderItem={ this._renderItem }
+        renderItem={ this._renderItem1 }
         keyExtractor={ this._keyExtractor }
       />}
       </View>   

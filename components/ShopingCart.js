@@ -16,11 +16,12 @@ import { Entypo } from '@expo/vector-icons';
 
 
 
-class ShopingCart0 extends Component {
+class ShopingCart extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      visibility:true
+      visibility:true,
+      show:false
     };
 }
      item = [
@@ -46,9 +47,8 @@ class ShopingCart0 extends Component {
     // const { cartItems, total } = this.props;
     return (
       <View style={ styles.container }>
-       {/* {this.state.show?<ModelScreen/>:null} */}
+       {this.state.show?<ModelScreen/>:null}
           {/* <ModelScreen/> */}
-          <ModelScreen/>
         <Text style={ styles.sectionTitle }>Previous order</Text>
         <FlatList
          style={{ flexGrow: 0 }}
@@ -57,6 +57,7 @@ class ShopingCart0 extends Component {
          renderItem={ this._renderItem }
         />
           
+      <Button title="Show" onPress={this.setShow}/>
       {/* {this.state.show?<ModelScreen/>:null} */}
      
       </View>
@@ -82,4 +83,4 @@ const styles = StyleSheet.create({
   },
   
 });
-export default ShopingCart0;
+export default ShopingCart;

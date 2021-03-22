@@ -20,10 +20,15 @@
       "supportsTablet": true
     },
     "android": {
+
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyDsUWTPe8w0XzwTwAVuINAEkrAnRMP4Z-c"
+        }},
       "package": "com.sanampuribramhaiah.deliveryapp"
     },
     "web": {

@@ -5,46 +5,51 @@ import {
   StyleSheet,
   Image,
   TouchableHighlight,
+  Modal
 } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
-
+import { Entypo } from '@expo/vector-icons';
+import ModelScreen from '../components/ModelScreen'
+import { withNavigation } from 'react-navigation';
 
 
 class ItemShoppingCart extends Component {
   render() {
-    const { item, removeFromCart } = this.props;
+    const { item } = this.props;
     return (
+      
+      <View>
+     
       <View style={ styles.itemCard}>
-        <Image source={{ uri: item.image }} 
-         style={ styles.imageSize }
-        />
         <View style={ styles.itemInfo }>
           <Text style={ styles.itemTitle }>
-            { item.name } - US${ item.price } x { item.qty }
+            { item.name } - { item.id } 
           </Text>
-          <Text>Subtotal: US${ item.subtotal }</Text>
         </View>
         <TouchableHighlight style={ styles.deleteButton }
-         onPress={ () => removeFromCart(item.id) }>
-          <MaterialIcons name='delete' size={32} color='#F44336'/>
+        onPress={() => this.props.navigation.navigate("Demo")}>
+          <Entypo name="plus" size={28} color="black" />
         </TouchableHighlight>
+      </View>
       </View>
     );
   }
 }
 
-const mapDispatchToProps = (dispatch) => bindActionCreators({
-  removeFromCart
-}, dispatch);
+
+
+
+
 const styles = StyleSheet.create({
   itemCard: {
     flex: 1,
     paddingTop: 4,
     paddingBottom: 4,
-    marginTop: 4,
-    marginBottom: 4,
+    marginTop: 8,
+    marginBottom: 8,
     flexDirection: 'row',
-    backgroundColor: '#fff'
+    backgroundColor: '#e0e0eb',
+    // borderWidth:1
   },
   imageSize: { 
     width: 75,
@@ -67,4 +72,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default ItemShoppingCart;
+export default withNavigation(ItemShoppingCart);

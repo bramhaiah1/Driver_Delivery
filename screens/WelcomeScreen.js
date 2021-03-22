@@ -4,6 +4,7 @@ import React, {Component } from "react";
  import { FontAwesome } from "@expo/vector-icons";
  import { createStackNavigator, createAppContainer } from "react-navigation";
 
+ const { width: WIDTH, height:HEIGHT } = Dimensions.get("window");
 
  import { Avatar, Button, Card, Title, Paragraph,TextInput } from 'react-native-paper';
 
@@ -39,7 +40,7 @@ import React, {Component } from "react";
         let Splash_Screen = (  
              <View style={styles.SplashScreen_RootView}>  
                  <View style={styles.SplashScreen_ChildView}>  
-                       <ImageBackground source={require("../assets/welcome.jpeg")}      style={{width:"100%", height: '100%', resizeMode:'stretch'}} />  
+                       <ImageBackground source={require("../assets/mmain.jpeg")}      style={{width:"100%", height: '100%', resizeMode:'stretch'}} />  
                 </View>  
              </View> )  
              const screenHeight = Dimensions.get('window').height
@@ -50,7 +51,7 @@ import React, {Component } from "react";
 <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
         
                 <Image source={require("../assets/login.jpeg")}      style={{ width:"100%",
-              height: '50%', resizeMode: 'stretch'}} /> 
+              height: '30%', resizeMode: 'stretch'}} /> 
                <Card style = { styles.card }>
                  
                <Image
@@ -58,10 +59,12 @@ import React, {Component } from "react";
           height: 130,
           width: 130,
           bottom: 20,
+          alignItems:'center',
+
           left:110,
           top:40,
         }}
-        source={require("../assets/Icon1.png")}
+        source={require("../assets/Loginlogo.png")}
       ></Image>
      
       <View >
@@ -87,12 +90,13 @@ import React, {Component } from "react";
           <Text >Forgot password?</Text>
         </TouchableOpacity>
       </View>
+      <View style={{alignItems:"center"}}>
       <TouchableOpacity  style={styles.btnLogin}
        onPress={() => this.props.navigation.navigate("product")}
 >
         <Text style={styles.text}>SIGN IN</Text>
       </TouchableOpacity>
-     
+      </View>
                </Card>
               
             <Text style={styles.text}>
@@ -163,16 +167,15 @@ import React, {Component } from "react";
       position: "absolute",
       top: 550,
       right: 37,
-    },
-    btnLogin: {
+    },btnLogin: {
      
       // backgroundColor: "#432577",
       backgroundColor:"#ffa500"  ,
           justifyContent: "center",
       marginTop: 30,
-      marginLeft: 70,
-
-      top: 80,
+alignItems:"center"    ,
+alignContent:"center",
+  top: 80,
       borderBottomWidth: 1,
       borderColor:"#fff",
       borderStyle: "solid",
@@ -181,6 +184,7 @@ import React, {Component } from "react";
     
       height: 50,
     },
+    
     label1: {
         position: "absolute",
         marginTop:30,
